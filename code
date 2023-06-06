@@ -1,0 +1,18 @@
+import qrcode
+link=input("Enter the URL or text : ")
+type=input("What coustum or Simple for coustum enter c :")
+if(type=="c"):
+    qr=qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_H,box_size=20,border=3)
+    qr.add_data(link)
+    qr.make(fit=True)
+    qr_color=input("Enter QR color : ")
+    background=input("Enter background color of QR : ")
+    img=qr.make_image(fill_color=qr_color,back_color=background)
+    img_name=input("Enter img name : ")
+    img.save(img_name+".png")
+else:
+    img=qrcode.make(link)
+    img_name=input("Enter img name : ")
+    img.save(img_name+".png")
+    
+print("QR Generated")    
